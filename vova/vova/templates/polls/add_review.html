@@ -1,0 +1,16 @@
+ {% extends 'base.html' %}
+
+{% block title %} Форма по добавлению песни {%endblock %}
+
+{% block content %}
+
+    <div class="features">
+        <h1>Форма по добавлению обзора</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}<br>
+            <button class="btn btn-success", type="submit">Добавить обзор</button>
+        </form>
+    </div>
+
+{% endblock %}

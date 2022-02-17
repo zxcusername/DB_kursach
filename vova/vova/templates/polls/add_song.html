@@ -1,0 +1,19 @@
+ {% extends 'base.html' %}
+
+{% block title %} Форма по добавлению песни {%endblock %}
+
+{% block content %}
+
+    <div class="features">
+        <h1>Форма по добавлению песни</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.author }}<br>
+            {{ form.title }}<br>
+            {{ form.lyrics }}<br>
+            <span>{{error}} </span>
+            <button class="btn btn-success", type="submit">Добавить песню</button>
+        </form>
+    </div>
+
+{% endblock %}

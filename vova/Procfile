@@ -1,0 +1,1 @@
+web: gunicorn vova.wsgi --log-file -

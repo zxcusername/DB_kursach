@@ -1,0 +1,58 @@
+ {% extends 'base.html' %}
+
+{% block title %} {{user}} {%endblock %}
+
+{% block content %}
+
+<h1></h1>
+
+
+
+
+<div class="card" style="width: 40rem;">
+    <div class="card-header">
+      <h5 class="card-title">{{user}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{user.bio}}</h6>
+    </div>
+    <div class="card-body">
+
+    {% if song_list %}
+        песни:
+        <ul>
+            
+            {% for song in song_list %}
+                <li class="card-text">{{song.title}}</li>
+            {% endfor %}
+        </ul>
+        
+    {% endif %}
+
+   
+    {% if review_list %}
+        обзоры:
+            {% for review in review_list %}
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" href =" {% url 'polls:view_dude' review.song.author.id %} ">{{ review.song.author }}</a> — {{ review.song.title }}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">текст: {{ review.text_score }} подача: {{ review.flow_score }} общее впечатление: {{ review.general_score }}</li>
+                        <li class="list-group-item">{{ review.comment }}</li>
+                    </ul>
+                    
+                </div>
+            {% endfor %}
+    {% endif %}
+      
+      <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a> -->
+    </div>
+  </div>
+
+
+
+
+
+
+{% endblock %}
